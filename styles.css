@@ -1,0 +1,22 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: inline;
+    float: right;
+    border-radius: 50px;
+    width: 30vw;
+}
+
+.menu > button {
+    width: 2rem;
+    border-radius: 50px;
+    margin: .25rem;
+}
+
+.content {
+    display: block;
+    margin: 2rem 1rem;
+}
