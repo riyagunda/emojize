@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/8ed2ecb447.js" crossorigin="anonymous"></script>
+    <title>Emojize | Main chat room</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emojize.css" />
+  </head>
+  <body>
+    <div class = "overall">
+
+      <div class = "overall-elements profile-bar">
+        <!--button to the profile / home page-->
+        <div class = "profile-button">
+          <i class="fa-solid fa-house" style="color: #000000;"></i>
+          <!--<i class="fa-regular fa-user fa-lg" style="color: #000000;"></i>-->
+          <span class = "hover-text">Home</span>
+        </div>
+
+        <!-- user avatar-->
+        <img class = "user-avatar" src="logo.png">
+        <p class = "username" style = "align-self: center;"><b>@_AmazeOtter_65</b></p>
+
+        <!-- text-->
+        <div style = "font-size: 17px; background-color: white;width:23vw; align-self: center;">
+          <p class = "user-emojis"><b>Current mood</b>: <span>😈</span> <span>😂</span> <span>👍</span> <span> 🥰</span> <span> 🥳</span></p>
+          <p class = "user-emojis"><b>Interests</b>: Music, Nature, Food, <br> Games, Coding</p>  
+        </div>   
+        
+        <!-- buttons-->
+        <div style ="display: flex; flex-direction: column; align-self: center;margin:10px">
+          <button class = "buttons-right"><i class="fa-regular fa-user fa-xs" style="color: #000000;"></i> Customize avatar</button>
+          <button class = "buttons-right">View personal chats <i class="fa-solid fa-caret-right" style="color: #000000;"></i></button>
+          <button class = "buttons-right"><i class="fa-solid fa-x fa-xs" style="color: #000000;"></i> Exit</button>
+        </div>
+
+        <!-- AI Chatbot-->
+        <div class = "chat-button">
+          <button style="background-color: black;border-radius: 35px; height:35px; width:35px; padding:7. 8px;margin-left:10px;"><i class="fa-regular fa-message fa-lg" style="color: #ffffff;"></i></button>
+          <span class = "chatbox-text">Chat</span>
+        </div>
+      </div>
+
+      <div class = "overall-elements main" style = "display: flex;">
+        <div class = "text-display">
+          <div class = "new-message"></div>
+          <div class = "js-break-time"></div>
+        </div>
+      </div>
+
+      <div class = "overall-elements left-bar">
+        <!-- Search bar-->
+        <div style = " display: flex;">
+          <input type="text" placeholder="#happy, #surprised..." class = "search" style = "width: 15vw;height:5vh;border-radius: 10vh;border: 0.5px black solid;padding:3px; padding-left:20px;margin:3vh; margin-right:1vh;">
+
+          <div class="menu" style="position: relative; top: 4vh; left: 1.02vw">
+            <i class="fa-regular fa-keyboard fa-lg test" style="color: #000000;" id="text-prompt" onclick="updateContent(0);"></i>
+            <i class="fa-regular fa-image fa-lg" style="color: #000000;" id="memes" onclick="updateContent(1);"></i>
+            <i class="fa-regular fa-face-smile-wink fa-lg" style="color: #000000;" id="lobbies"onclick="updateContent(2);"></i>
+            <div class="content"> </div>
+          </div>
+        </div>
+      
+        <div style="align-self: center;">
+          <input placeholder="Type here..." class = "js-task-name post-text-box" style = "position: relative; top:-20vh;right:-2vw;">
+    
+          <input type = "date" placeholder = "yyyy-mm-dd" class = "js-date" style = "visibility: hidden;">
+
+          <button onclick="
+            addToList();
+            printTask();
+          " style="width: 10vw;position: relative;top:-3vh;border-radius:10px;height: 6vh; background-color: white;position: relative; top:-22.5vh;right:2vh;">Post</button>
+        </div>              
+      </div>
+    </div>
+
+    <script src = "index.js"></script>
+  </body>
+</html>

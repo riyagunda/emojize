@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://kit.fontawesome.com/8ed2ecb447.js" crossorigin="anonymous"></script>
+    <title>Emojize | Overwhelmed lobby</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="emojize.css" />
+  </head>
+  <body>
+    <div class = "overall">
+
+      <div class = "overall-elements profile-bar">
+        <!--button to the profile / home page-->
+        <div class = "profile-button">
+          <i class="fa-solid fa-house" style="color: #000000;"></i>
+          <!--<i class="fa-regular fa-user fa-lg" style="color: #000000;"></i>-->
+          <span class = "hover-text">Home</span>
+        </div>
+
+        <!-- user avatar-->
+        <img class = "user-avatar" src="logo.png">
+        <p class = "username" style = "align-self: center;"><b>@_AmazeOtter_65</b></p>
+
+        <!-- text-->
+        <div style = "font-size: 18px; background-color: white;width:23vw; align-self: center;">
+          <p class = "user-emojis"><b>Current mood</b>: <span>😈</span> <span>😂</span> <span>👍</span> <span> 🥰</span> <span> 🥳</span></p>
+          <p class = "user-emojis"><b>Interests</b>: Music, Nature, Food, <br> Games, Coding</p>  
+        </div>   
+        
+        <!-- buttons-->
+        <div style ="display: flex; flex-direction: column; align-self: center;margin:10px">
+          <button class = "buttons-right"><i class="fa-regular fa-user fa-xs" style="color: #000000;"></i> Customize avatar</button>
+          <button class = "buttons-right">View personal chats <i class="fa-solid fa-caret-right" style="color: #000000;"></i></button>
+          <button class = "buttons-right"><i class="fa-solid fa-x fa-xs" style="color: #000000;"></i> Exit</button>
+        </div>
+
+        <!-- AI Chatbot-->
+        <div class = "chat-button">
+          <button style="background-color: black;border-radius: 35px; height:35px; width:35px; padding:7. 8px;margin-left:10px;"><i class="fa-regular fa-message fa-lg" style="color: #ffffff;"></i></button>
+          <span class = "chatbox-text">Chat</span>
+        </div>
+      </div>
+
+      <div class = "overall-elements main" style = "display: flex;">
+        <div class = "text-display">
+          <div class = "new-message"></div>
+        </div>
+      </div>
+
+      <div class = "overall-elements left-bar">
+        <!-- Search bar-->
+        <div style = " display: flex;">
+          <input type="text" placeholder="#happy, #surprised..." class = "search" style = "width: 15vw;height:5vh;border-radius: 10vh;border: 0.5px black solid;padding:3px; padding-left:20px;margin:3vh; margin-right:1vh;">
+
+          <div class="menu" style="position: relative; top: 4vh; left: 1.02vw">
+            <i class="fa-regular fa-keyboard fa-lg test" style="color: #000000;" id="text-prompt" onclick="updateContent(0);"></i>
+            <i class="fa-regular fa-image fa-lg" style="color: #000000;" id="memes" onclick="updateContent(1);"></i>
+            <i class="fa-regular fa-face-smile-wink fa-lg" style="color: #000000;" id="lobbies"onclick="updateContent(2);"></i>
+            <div class="content"> </div>
+          </div>
+        </div>
+      
+        <div style="align-self: center;">
+          <input placeholder="Type here..." class = "js-task-name post-text-box" style = "position: relative; top:-20vh;right:-2vw;">
+    
+          <input type = "date" placeholder = "yyyy-mm-dd" class = "js-date" style = "visibility: hidden;">
+
+          <button onclick="
+            addToList();
+            printTask();
+          " style="width: 10vw;position: relative;top:-3vh;border-radius:10px;height: 6vh; background-color: white;position: relative; top:-22.5vh;right:2vh;">Post</button>
+        </div>              
+      </div>
+    </div>
+
+    <script>
+       
+     // document.querySelector('.text-display').innerHTML += input;
+
+      //----------------------------------------------------------
+      const main_chat_room = document.createElement("div");
+      const lobby_angry = document.createElement("div");
+      const lobby_happy = document.createElement("div");
+      const lobby_sad = document.createElement("div");
+      const lobby_overwhelmed = document.createElement("div");
+
+      //update content for menu
+      const contentStates = [
+          "content1",
+          "content2",
+          lobbies = ['index', "lobby_happy", 'lobby_sad', 'lobby_angry', 'lobby_overwhelmed'],
+          lobbyNames = ["Main chat room", " 😊 Join Happy lobby", "😢 Join Sad lobby", "😟 Join Worried lobby", "😨 Join Scared lobby"]
+      ];
+
+
+      const contentDiv = document.querySelector('.content');
+
+      function updateContent(index) {
+          contentDiv.innerHTML = '';
+          if (index === 1) {
+            contentDiv.innerHTML = `<iframe src="https://giphy.com/embed/tIeCLkB8geYtW" width="300"  frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            <iframe src="https://giphy.com/embed/tXL4FHPSnVJ0A" width="300"  frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            <iframe src="https://giphy.com/embed/fzGR5h8oAAzQX3F6e9" width="300" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            <iframe src="https://giphy.com/embed/nMTKVjM4SY3ZaUfbWK" width="300" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            <iframe src="https://giphy.com/embed/UO5elnTqo4vSg" width="300" height="439" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            <iframe src="https://giphy.com/embed/kemcL4hhPTtQiB1nmg" width="300" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>`;
+          } else if (index === 2) {
+            let cont = '';
+              for(let i=0; i<lobbies.length; i++) {
+                  contentDiv.append(lobbies[i]);
+                  let temp = contentStates[2][i] + '.html';
+                  console.log(temp);
+                  cont += `<button class = "lobby-button"> <a href="`+temp+`">${lobbyNames[i]} (326/500)</a></button>`;
+              }
+              contentDiv.innerHTML = cont;
+          } else if(index === 0) {
+            contentDiv.innerHTML = `<button class = "text-prompts" onclick = "tasks.push({name: "Hey!", date : todoDate});">Hey!</button><br>
+            <button class = "text-prompts">How's your day going?</button><br>
+            <button class = "text-prompts">Thank you!</button><br>
+            <button class = "text-prompts">You're welcome :)</button><br>
+            <button class = "text-prompts">I'm sorry</button><br>
+            <button class = "text-prompts">That is hilarious!</button><br>
+            <button class = "text-prompts">Keep going, you got this!</button><br>
+            <button class = "text-prompts">Wow, I'm impressed!</button>`;
+          }
+      }
+
+
+      //-----------------------------------------
+      let tasks = [];
+     if(JSON.parse(localStorage.getItem('tasks5')) === null){
+      tasks = [];
+     } else {
+      tasks = JSON.parse(localStorage.getItem('tasks5'));
+     } 
+
+     printTask();
+
+     function addToList() {
+      const todoTask = document.querySelector('.js-task-name').value;
+      const todoDate = document.querySelector('.js-date').value;
+      tasks.push({name: todoTask, date : todoDate});
+      document.querySelector('.js-task-name').value = '';
+      console.log(tasks);
+      printTask();
+
+      saveTasks();
+     }
+
+     function printTask() {
+      let todoList = '';
+      let html = '';
+      for(let i = 0; i < tasks.length; i++) {
+        html = `
+          <div class = "new-message1">${tasks[i].name}
+          <button onclick = "
+          tasks.splice(${i}, 1);
+          printTask();
+          console.log(tasks);
+        " class = "delete-style">Delete</button></div>`;
+        todoList += html;
+      }
+      document.querySelector('.new-message').innerHTML = todoList;
+      saveTasks(todoList);
+    }
+
+    function saveTasks() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    } 
+
+    </script>
+  </body>
+</html>
