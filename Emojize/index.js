@@ -1,5 +1,5 @@
 let input = localStorage.getItem('input');
-
+let display = false;
       function returnText(){
         input = document.getElementById("user-input").value;
         document.getElementById("user-input").innerHTML = '';
@@ -28,7 +28,8 @@ let input = localStorage.getItem('input');
       function updateContent(index) {
           contentDiv.innerHTML = '';
           if (index === 1) {
-            contentDiv.innerHTML = `<iframe src="https://giphy.com/embed/tIeCLkB8geYtW" width="300"  frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
+            contentDiv.innerHTML = `<div onclick="console.log('riya');"><iframe src="https://giphy.com/embed/tIeCLkB8geYtW" width="300"  frameBorder="0"></iframe><br></div>
+
             <iframe src="https://giphy.com/embed/tXL4FHPSnVJ0A" width="300"  frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
             <iframe src="https://giphy.com/embed/fzGR5h8oAAzQX3F6e9" width="300" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
             <iframe src="https://giphy.com/embed/nMTKVjM4SY3ZaUfbWK" width="300" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br>
@@ -44,14 +45,29 @@ let input = localStorage.getItem('input');
               }
               contentDiv.innerHTML = cont;
           } else if(index === 0) {
-            contentDiv.innerHTML = `<button class = "text-prompts" onclick = "tasks.push({name: "Hey!", date : todoDate});">Hey!</button><br>
-            <button class = "text-prompts">How's your day going?</button><br>
-            <button class = "text-prompts">Thank you!</button><br>
-            <button class = "text-prompts">You're welcome :)</button><br>
-            <button class = "text-prompts">I'm sorry</button><br>
-            <button class = "text-prompts">That is hilarious!</button><br>
-            <button class = "text-prompts">Keep going, you got this!</button><br>
-            <button class = "text-prompts">Wow, I'm impressed!</button>`;
+            contentDiv.innerHTML = `<button class = "text-prompts" onclick = "addPromptToList('Hey!');
+            printTask();">Hey!</button><br>
+
+            <button class = "text-prompts"  onclick = "addPromptToList('How is your day going?');
+            printTask();">How is your day going?</button><br>
+
+            <button class = "text-prompts"  onclick = "addPromptToList('Thank you!');
+            printTask();">Thank you!</button><br>
+
+            <button class = "text-prompts" onclick = "addPromptToList('You are welcome!');
+            printTask();">You are welcome!</button><br>
+
+            <button class = "text-prompts"  onclick = "addPromptToList('I am sorry!');
+            printTask();">I am sorry!</button><br>
+
+            <button class = "text-prompts" onclick = "addPromptToList('That is hilarious!');
+            printTask();">That is hilarious!</button><br>
+
+            <button class = "text-prompts"  onclick = "addPromptToList('Keep going, you got this!');
+            printTask();">Keep going, you got this!</button><br>
+
+            <button class = "text-prompts" onclick = "addPromptToList('Wow, I am impressed!');
+            printTask();">Wow, I am impressed!</button>`;
           }
       }
 
@@ -67,6 +83,28 @@ let input = localStorage.getItem('input');
 
      function addToList() {
       const todoTask = document.querySelector('.js-task-name').value;
+      const todoDate = document.querySelector('.js-date').value;
+      tasks.push({name: todoTask, date : todoDate});
+      document.querySelector('.js-task-name').value = '';
+      console.log(tasks);
+      printTask();
+
+      saveTasks();
+     }
+
+     function addPromptToList(phrase) {
+      const todoTask = phrase;
+      const todoDate = document.querySelector('.js-date').value;
+      tasks.push({name: todoTask, date : todoDate});
+      document.querySelector('.js-task-name').value = '';
+      console.log(tasks);
+      printTask();
+
+      saveTasks();
+     }
+
+     function addGifToList(gif) {
+      const todoTask = gif;
       const todoDate = document.querySelector('.js-date').value;
       tasks.push({name: todoTask, date : todoDate});
       document.querySelector('.js-task-name').value = '';
@@ -117,3 +155,22 @@ let input = localStorage.getItem('input');
 
     console.log(subtract(7));
     
+
+
+
+
+
+
+
+
+
+
+
+    function myFunction() {
+      var x = document.getElementById("chat-pop");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+    }

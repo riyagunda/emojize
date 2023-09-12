@@ -139,7 +139,7 @@ body {
         white-space: nowrap;
         position: relative;
         top:2.5vh;
-        left:-17.6vw;
+        left:-17vw;
         overflow-x: hidden;
       }
 
@@ -190,4 +190,17 @@ body {
         background-color: cornsilk;
         height:10vh;
         border-radius: 10px;
+      }
+
+      #chat-pop {
+        width:20vw;
+        height:100%;
+        border-radius: 10px;
+        border:1px black solid;
+        background-color: white;
+        position: relative;
+        top:-30vh;
+        left: 2vw;
+        overflow-y: scroll;
+        padding:50px;
       }
